@@ -1,0 +1,1117 @@
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.0" xml:lang="hu">
+    <info>
+        <title>Helló, Gutenberg!</title>
+        <keywordset>
+            <keyword/>
+        </keywordset>
+        <cover>
+            <para>
+                Programozás tankönyvek rövid olvasónaplói.
+            </para>
+        </cover>
+    </info>
+    <section>
+        <title>Programozási alapfogalmak</title>
+        <para>         
+            <citation>PICI</citation>       
+        </para>
+	<para>
+	1.2 Alapfogalmak
+	</para>
+	<para>
+	A programozási nyelveknek három szintjét különböztetjük meg. Ezek a gépi nyelekv, assembly szintű nyelvek és a magas szintű nyelvek.
+	</para>
+	<para>
+	Forráasszövegnek vagy forrásprogramnak nevezzük a magas szinten megírt programokat. Szintaktikai szabály a forrásszöveg összeállítására vonatkozó formai, nyelvtani szabályok összessége. Ezzel szemben a szemantikai szabályok a tartalmi, értelmezési és jelentésbeli szabályok. A szintaktikai és szemantikai szabályok együttese határozza meg a magas szintű programozási nyelveket.
+	</para>
+	<para>
+	Minden processzor csak a saját gépi nyelvén írt programokat tudja lefordítani, ezért a megírt forrásszöveget arra a nyelvre kell átfordítani, ami lehet fordítóprogramos vagy interpreteres. 
+	</para>
+	<para>
+	A fordítóprogram a magas szinten megírt forrásszövegből tárgyprogramot állít elő. Ezt úgy végzi el, hogy a forrásszöveget feldarabolja lexikális egységekre és megnézi, teljesülnek-e z adott nyelv szintaktikai szabályai.
+	</para>
+	<para>
+	Ezután a kapcsolatszerkesztő futtatható programot készít a tárgyprogramból.
+	</para>
+	<para>
+	Futtatható programot a betöltő helyezi el a tárban, és adja át neki a vezérlést. Majd a program működését a futtató rendszer felügyeli.
+	</para>
+	<para>
+	A fordítóprogrammal ellentétben az interpreter nem készít tárgyprogramot. Utasításonként értelmezi a forráskódot, nem egyben, egészben kezeli azt, mint a fordítóprogram. 
+	</para>
+	<para>
+	Minden programnyelnek van hivatkozási nyelve, ami a programnyelv pontosan definiált szintaktikai és szemantikai szabályai. 
+	</para>
+	<para>
+	Az IDE (integrált fejlesztői környezet) mint program biztosít nekünk grafikus felületet a programozáshoz. Tartalmaznak szövegszerkeztőt, fordítót, kapcsolatszerkeztőt, betöltőt, futtató rendszert és belövőt.
+	</para>
+	<para>
+	2.4 Adattípusok
+	</para>
+	<para>
+	Az adattípus egy absztrakt, névvel rendelkező rogramozási eszköz, amely mindig más, konkrét programozási eszköz egy komponenseként jelenik meg.
+	</para>
+	<para>
+	Az adattípust három dolog határozza meg, ezek: tartomány, műveletek, reprezentáció
+	</para>
+	<para>
+	Egy adattípus tartománya azon elemek halmaza, melyeket az adott típusú konkrét programozási eszköz fölvehet értékként. Az adattípushoz tartozó műveletek azon műveletek, amelyet a tartomány elemeivel el tudunk végezni. A reprezentáció pedig a az egyes típusok tartományába tartozó értékek tárban való megjelenését határozza meg.
+	</para>
+	<para>
+	Az egyszerű típusok az egész, valós, numerikus (egész és valós), karakterlánc, logikai, felsorolás, sorszámozott.
+	</para>
+	<para>
+	Összetett típusok: tömb és rekord. Mindkét típus az absztrakt adatszerkezetek megjelenítésére használandó. Különbség, hogy a tömb homogén, azaz elemei azonos típusúak. A rekord ezzel szemben heterogén.
+	</para>
+	<para>
+	Továbbá létezik még a mutató típus, amely tartományának elemei tárcímek. Illetve létezik még a felhasználó általt definiált típus is, amelyet mi magunk adunk meg. 
+	</para>
+	<para>
+	2.5 A nevesített konstans
+	</para>
+	<para>
+	A nevesített konstans a nevével jelenik meg és az mindig az értékkomponenst jelenti. A nevesített konstans értékét a deklarációnál határozzuk meg. Megváltoztatni azt később nem lehet. C-ben ez a #define kulcsszóval történik. Ugyanezt C++-ban a const szóval érhetjük el.
+	</para>
+	<para>
+	2.7 Alapelemek az egyes nyelvekben.
+	</para>
+	<para>
+	A C nyelv típusrendszere:
+	</para>
+	<programlisting language = "C">
+	aritmetikai típusok
+		integrális típusok
+			egész (int, short[int], long[int])
+			karakter (char)
+			felsorolásos
+		valós (float, double, long double)
+	származtatott típusok
+		tömb
+		függvény
+		mutató
+		struktúra
+		union
+	void típus
+	</programlisting>
+	<para>
+	C-ben az aritmetikai típusok az egyszerű, a származtatottak az összetett típusok.
+	</para>
+	<para>
+	Az aritmetikai típusok tartományainak elemeivel aritmetikai műveletek végezhetőek el. Logikai típus nincs, hamisnak az int 0 felel meg. Minden más int típusú értéket a C nyelv igaznak vesz, de alapesetben a C az igaz logikai értéket int 1-ként írja.
+	</para>
+	<para>
+	A signed és az unsigned előjeles és nem előjeles ábrázolást jelentenek.
+	</para>
+	<para>
+	3. Kifejezések
+	</para>
+	<para>
+	A kifejezések olyan szintaktikai eszközök melyeknek a feladatai, hogy ismert értékekből egy új értéket határozzunk meg a segítségükkel.
+	</para>
+	<para>
+	A kifejezések három szészből állnak. Ezek az operandusok - amelyeken a műveleteket végezzük el -, az operátorok - műveleti jelek - és a kerek zárójelek, amelyek a műveletek sorrendjét határozza meg.
+	</para>
+	<para>
+	Operandusok számától függően megkülönböztetünk egy- (unáris), két- (bináris) és háromoperandúsú (ternáris) operátorokat. Az operátorok pedig lehetnek prefix, infix vagy postfix pozícióban, attól függően, hogy az operandusok előtt, között vagy után áll-e.
+	</para>
+	<para>
+	A kifejezés kiértékelése az, amikor egy kifejezés értéke és típusa meghatározódik. 
+	</para>
+	<para>
+	A műveletek végrehajtási sorrendje lehet balról-jobbra, jobbról-balra és balról-jobbra a precedencia táblázat figyelembevételével.
+	</para>
+	<para>
+	Konstans kifejezésről beszélünk, ha az adott kifejezés értéke már a fordítási időben eldől.
+	</para>
+	<para>
+	4. Utasítások
+	</para>
+	<para>
+	Az utasításoknak két nagy csoportja van: deklarációs és végrehajtható utasítások.
+	</para>
+	<para>
+	A deklarációs utasítások mögött nem áll tárgykód. Teljes mértékben a fordítóprogramnak szólnak. Befolyásolják a tárgykódot, de maguk nem kerülnek lefordításra.
+	</para>
+	<para>
+	A végrehajtható utasításokból lesz a tárgykód generálva. Típusai:
+	</para>
+	<para>
+	1. Értékadó 
+	2. Üres
+	3. Ugró
+	4. Elágaztató
+	5. Ciklusszervező
+	6. Hívó
+	7. Vezérlésátadó
+	8. I/O
+	9. Egyéb
+	</para>
+	<para>
+	A 3-7. utasítások a vezérlési szerkezetet megvalósító utasítások. 
+	</para>
+	<para>
+	Az értékadó utasítás feladata beállítani vagy módosítani egy változó értékkomponensét.
+	</para>
+	<para>
+	Az üres utasítás hatására a processzor egy üres gépi utasítást hajt végre.
+	</para>
+	<para>
+	Az ugró utasítás segítségével a program egy adott pontjáról egy adott címkével ellátott végrehajtható utasításra adhatjuk át a vezérlést. Az ugró utasítás használata manapság már nem ajánlott, mert nem biztonságos, átláthatatlan kódot eredményez.
+	</para>
+	<para>
+	Az elágaztató utasításoknak van két altípusa: a kétirányú és a többirányú
+	</para>
+	<para>
+	A kétirányú utasítás arra szolgál, hogy a program egy adott pontján két lehetőség közül válasszunk. Általános alakja:
+	</para>
+	<programlisting>
+	IF feltétel THEN tevékenység [ELSE tevékenység]
+	</programlisting>
+	<para>
+	Ahol a feltétel egy logikai vagy annak megfelelő kifejezés. Először kiértékelődik a feltétel. Ha az igaz, végrehajtódik a THEN utáni tevékenység és a program az IF utasítást követő utasításon folytatódik. Ha a feltétel értéke hamis és van ELSE ág, akkor az ELSE utáni tevékenység hajtódik végre. Ha nincs általunk írt ELSE ág akkor az üresnek tekintetik. C-ben nem szerepel a THEN kulcsszó.
+	</para>
+	<para>
+	Többirányú elágaztató utasítás esetén a program egy pontján egymást kölcsönösen kizáró tevékenységek közül választunk egyet. A választás maga egy kifejezés kiértékelése alapján történik. 
+	</para>
+	<para>
+	A Ciklusszervező utasítások lehetővé teszik, hogy a program egy adott pontján egy bizonyos tevékenységet akárhányszor megismételjünk. Három részből áll: fej, mag, vég. Ha a magban szereplő utasítások egyszer sem futnak le, akkor üres ciklusról beszélünk. Ha az ismétlődés soha nem áll le, akkor pedig végtelen ciklusról beszélünk.
+	</para>
+	<para>
+	A Ciklusok egy fajtája a feltételes ciklus. Szemantikájuk szerint beszélünk végfeltételes és kezdőfeltételes ciklusokról. Nevükhez hűen, a kezdőfeltételes ciklusban a feltétel a fejben jelenik meg. Ugyanígy a végfeltételes ciklusban a feltétel a végben jelenik meg, tehát ez a fajta lefut mindig minimum egyszer. 
+	</para>
+	<para>
+	Az előírt lépésszámű ciklusokhoz a lépésszámok a fejben vannak megadva. Ilyen esetben mindig tartozik a ciklushoz egy ciklusváltozó melynek van megadott kezdő- és végértéke. Ekkor meg kell adni a lépésközt is, amely azt határozza meg, hogy a kezdő értéktől a ciklusváltozó milyen nagyságrenddel haladjon a végérték felé.
+	</para>
+	<para>
+	A felsorolásos ciklus az előírt lépésszámű ciklus egyfajta általánosítása. Nem lehet sem üres, sem végtelen ciklus.
+	</para>
+	<para>
+	A végtelen ciklus az a ciklusfajta, ahol sem a fejben, sem a végben nincs megadva az ismétlődésre vonatkozó indormáció.
+	</para>
+	<para>
+	Továbbá létezik még az összetett ciklus, amely az előző ciklusfajták kombinációiból áll össze.
+	</para>
+	<para>
+	A vezérlőutasításokból C-ben három van: CONTINUE, BREAK, RETURN[kifejezés].
+	A CONTINUE a ciklus magjában használandó. A ciklus magjának hátralévő utasításait nem hajtja végre., hanem az ismétlődés feltételeit vizsgálja meg és vagy újabb cikluslépésbe kezd, vagy befejezi a ciklust.
+	A BREAK szintén a ciklusmagban használandó, vagy elágaztató utasításban. A ciklust szabályosan befejezteti, illetőleg kilép a többszörös elagaztató utasításból.
+	A RETURN[kifejezés] szabályosan befejezteti a függvényt és visszaadja a  vezérlést a hívónak.
+	</para>
+	<para>
+	5. A programok szerkezete
+	</para>
+	<para>
+	Az eljárásorientált programnyelvekben a program szövege többé-kevésbé független részekre, programegységekre bontható. Ugyanilyen nyelvekben a következő programegységek léteznek: alprogram, blokk, csomag, taszk.
+	</para>
+	<para>
+	Az alprogram az újrafelhasználás eszköze. Akkor alkalmazható, ha a program különböző pontjain ugyanaz a programrész ismétlődik meg. Az adott helyeken az alprogram meghívható. Az alprogramot általánosabban írjuk le, mint ahogyan az adott programrészben szerepelt volna, formális paraméterekkel látjuk el. 
+	</para>
+	<para>
+	Az alprogram részei: fej (specifikáció), törzs (implementáció), vég
+	Az alprogram komponensei: név, formális paraméter lista, törzs, környezet.
+	</para>
+	<para>
+	A név egy azonosító, amely mindig a fejben szerepel.
+	</para> 
+	<para>
+	A formális paraméter lista is a fej része. Abban azonosítók szerepelnek, melyek egy általános szerepkört írnak le. A hívás helyén konkretizálni kell a paramétereket. Kerek zárójelek között álnak és lehet üres. 
+	</para>
+	<para>
+	A törzsben deklarációs és végrehajtható utasítások szerepelnek. Ha egy alprogramban deklarálunk egy változót, akkor az az adott alprogram lokális eszköze. A lokális eszközöket csak az adott alprogram használhatja. Azokat az eszközöket, amelyeket szabadon használhat minden alprogram globális eszközöknek nevezzük. Ezeket az alprogramokon kívül deklaráljuk.
+	</para>
+	<para>
+	Az alprogram környezete alatt a globális változók együttesét értjük.
+	</para>
+	<para>
+	Az alprogramok két fajtája az eljárás és a függvény. Az eljárás valamilyen tevékenységet hajt végre. Ezen tevékenység eredményét a hívás helyén használhatjuk fel.
+	</para>
+	<para>
+	A függvény feladata egyetlen érték meghatározása, amit a visszatérési értéknek nevezünk. A visszatérési érték típusa a függvény specifikációjához tartozik. Amikor egy függvény megváltoztatja paramétereit vagy környezetét, azt mellékhatának hívjuk, amit általában károsnak tekintünk.
+	</para>
+	<para>
+	Az eljárások hívásának alakja:
+	</para>
+	<programlisting>
+	[alapszó] eljárásnév(aktuális_paraméter_lista)
+	</programlisting>
+	<para>
+	Ahol az alapszó nem minden programnyelven létezik, de ha igen, akkor az leggyakrabban CALL
+	</para>
+	<para>
+	A függvények hívásának alakja:
+	</para>
+	<programlisting>
+	függvénynév(aktuális_paraméter_lista)
+	</programlisting>
+	<para>
+	Az eljárásorientált nyelvekben minden programban kell lennie egy speciális programegységnek, amit főprogramnak nevezünk. Ez alprogram jellegű.
+	</para>
+	<para>
+	Egy programegység bármikor meghívhat egy másik programegységet, ami megint meghívhat egy másikat stb. Ezt nevezzük hívási láncnak. A lánc első tagja a főprogram, minden tagja aktív, de csak az utoljára meghívott működik. Dinamikusan épül fel és bomlik le.
+	</para>
+	<para>
+	Amikor egy aktív programegységet hívunk meg, rekurzióról beszélünk. A rekurzió lehet közvetlen - a programegység önmagát hívja meg - és közvetett - a hívási láncban már korábban szereplő programot hívunk meg. Rekurzív algoritmus mindig átírható itertívvá, ami általában gyorsabb.
+	</para>
+	<para>
+	Egy alprogram meghívása egyes nyelvekben nem csak a fejen keresztül történhet meg, hanem a törzsben kialakított másodlagos belépési pontok nevével is lehet hivatkozni egy alprogramra.
+	</para>
+	<para>
+	A blokk egy olyan programegység, amely csak másik programegység belsejében helyezkedhet el. Külső szinten nem állhat. Egy blokknak van kezdete, törzse és vége. A blokk bárhol elhelyezhető, ahol végrehajtható utasítás állhat. 
+	</para>
+	<para>
+	Paraméterkiértékelés az, amikor egy alprogram hívásánál egymáshoz rendelődnek a formális- és aktuális paraméterek. Ekkor mindig a formális paraméterlista az elsődleges. Paraméterek a formális paraméterekhez való hozzárendelése történhet sorrendi kötés vagy névszerinti kötés szerint. Sorrendi kötés esetén a formálisparaméterekhez a felsorolás sorrendjében rendelődnek hozzá az aktuális paraméterek. A névszerinti kötés esetén az aktuális paraméterlistában határozhatjuk meg az egymáshoz rendelést úgy, hogy megadjuk a formális paraméter nevét és mellette valamilyen szintaktikával az aktuális paramétert.
+	</para>
+	<para>
+	Ha a formális paraméterek száma fix, a paraméterkiértékelés kétféleképpen mehet végbe: Az aktualás paraméterek számának meg kell egyeznie a formális paraméterek számával, vagy kevesebb is lehet, de ez csak érték szerinti paraméteradási mód esetén lehetséges. Ha a formális paraméterek száma nem rögzített, az aktuális paraméterek száma is tetszőleges. 
+	</para>
+	<para>
+	A nyelvek egy része szerint az aktuális paraméter és a formális paraméter típusa azonosnak kell lennie, más nyelvek szerint az aktuális paraméter típusának konvertálhatónak kell lennie.
+	</para>
+	<para>
+	A paraméteradás lehet:
+	</para>
+	<para>
+	1. érték szerinti
+	2. cím szerinti
+	3. eredmény szerinti
+	4. érték-eredmény szerinti
+	5. név szerinti
+	6. szöveg szerinti
+	</para>
+	<para>
+	Érték szerinti paraméteradás eseténa formális paramétereknek van címkomponensük a hívott alprogram területén. Az aktuális paraméternek kell lennie értékkomponensének a hívó oldalon. A hívott alprogram nem tud semmit a hívóról. Az aktuális paraméter kifejezés lehet.
+	</para>
+	<para>
+	Cím szerinti paraméteradás esetén a formális paramétereknek nincs címkomponensük a hívott alprogram területén. Az aktuális paraméternek viszont van. Az információátadás pedig kétirányú az előző egyirányúságával szemben. Az aktuális paraméter változó lehet.
+	</para>
+	<para>
+	Eredmény szerinti paraméteradás esetén a formális paramétereknek van címkompenensük a hívott alprogram területén. Az aktuális paramétereknek lennie kell címkomponensüknek. A kommunikáció egyirányú. Az aktuális paraméter változó lehet.
+	</para>
+	<para>
+	Érték-eredmény szerinti paraméteradás esetén a formális paraméternek van címkomponense a hívott területén és az aktuális paraméternek van érték- és címkomponense is. A kommunikáció kétirányú. Az aktuális paraméter változó lehet.
+	</para>
+	<para>
+	Név szerinti paraméteradás esetén az aktuális paraméter egy, az adott szövegkörnyezetben értelmezhető tetszőleges szimbólumsorozat lehet. Az aktuális paraméter adott szövegkörnyezetbeli értelmezésétől függ a kommunikáció iránya.
+	</para>
+	<para>
+	Szöveg szerinti paraméteradás a név szerinti változata. Különbség hogy az aktuális paraméter értelmező szövegkörnyezetének rögzítése és formális paraméter felülírása csak akkor következik be, amikor a formális paraméter neve először fordul elő az alprogram szövegében és végrehajtás folyamán.
+	</para>
+	<para>
+	Az alprogramok formális paramétereinek csoportjai:
+	1. Input (információt kap az alprogram a hívótól.), 2. Output (a hívott alprogram ad át információt a hívónak), 3. Input-output (az információ mindkét irányba mozog.)
+	</para>
+	<para>
+	Egy név hatásköre alatt értjük a program szövegének azon részét, ahol az adott név ugyanazt a programozási eszközt hivatkozza. Szinonimája a láthatóság. Egy programegységben deklarált nevet a programegység lokális nevének nevezzük. Azt a nevet, amelyet nem a programegységben deklaráltunk, de ott hivatkozunk rá, szabad névnek hívjuk. Azt a tevékenységet, mikor egy név hatáskörét megállapítjuk, hatáskörkezelésnek hívjuk. Két fajtája van, a statikus és a dinamikus.
+	</para>
+	<para>
+	A statikus hatáskörkezelés fordítási időben történik, egy programegység lokális neveit bezárja a külvilág elől. Ha egy név nem lokális egy programegységben, de ott látható, akkor globális névnek nevezzük.
+	</para>
+	<para>
+	A dinamikus hatáskörkezelés futási idejű tevékenység, a futtató rendszer végzi. Dinamikus hatáskörkezelésnél egy név hatásköre az a programegység, amelyben deklaráltuk, és minden olyan programegység, amely ezen programegységből induló hívási láncban helyezkedik el, hacsak ott nem deklaráltuk újra a nevet.
+	</para>
+	<para>
+	Input / Output
+	</para>
+	<para>
+	Az I/O középpontjában az állomány áll. Egy programban a logikai állomány egy olyan programozási eszköz, amelynek neve van, és amelynél az absztrakt állományjellemzők attribútumként jelennek meg. A fizikai állomány pedig a szokásos operációs rendszer szintű, konkrét, a perifériákon megjelenő, az adatokat tartalmazó állomány.
+	</para>
+	<para>
+	Funkció szerint beszélhetünk input, output és input-output állományról. Az inputból csak olvasni lehet, az outputba csak írni lehet és az input-outputba lehet írni és olvasni is.
+	</para>
+	<para>
+	Adatátviteli módból megkülönböztetünk folyamatos - van konverzió adatmozgatás közben - és bináris - nincs konverzió - adatátviteli módot. A formátumos módú adatátvitel alatt minden egyes egyedi adathoz a formátumok segítségével explicit módon meg kell adni a kezelendő karakterek darabszámát és típusát. Szerkesztett módú adatátvitel során minden egyes egyedi adathoz meg kell adni egy maszkot. A maszk elemeinek száma határozza meg a kezelendő karakterek darabszámát. A listázott módú átvitel során a folytonos karaktersorozatban magában vannak a tördelést végző speciális karakterek, amelyek az egyedi adatokat elhatárolják egymástól, a típusra nézve pedig nincs explicit módon megadott információ.
+	</para>
+	<para>
+	C nyelvben az I/O eszközrendszer nem része a nyelvnek. Létezik bináris és folyamatos módú átvitel. Standard könyvtári függvények állnak rendelkezésre. Az I/O függvények minimálisan egy karakter vagy karaktercsoport, illetve egy bájt vagy bájtcsoport írását és olvasását teszik lehetővé.
+	</para>
+	<para>
+	Kivételkezelés
+	</para>
+	<para>
+	A kivételek megszakítást okozó események. A kivételkezelés az a tevékenység, amit a program akkor végez el, ha kivétel következik be. A kivételkezelő egy programrész, amely egy adott kivétel bekövetkezése után lép működésbe. Egyes kivételek figyelése letiltható vagy engedélyezhető. Egy kivételnek van neve és kódja általában.
+	</para>
+	<para>
+	A kivételkezelési eszközrendszerrel kapcsolatban a nyelveknek a következő kérdéseket kell megválaszolni:
+	</para>
+	<para>
+	1. Milyen beépített kivételek vannak a nyelvben?
+	2. Definiálhat-e a programozó saját kivételt?
+	3. Milyenek a kivételkezelő hatásköri szabályai?
+	4. A kivételkezelés köthető-e programelemekhez?
+	5. Hogyan folytatódik a program a kivételkezelés után?
+	6. Mi történik, ha a kivételezőben következik be a kivétel?
+	7. Van-e a nyelvben beépített kivételkezelő?
+	8. Van-e lehetőség arra, hogy bármely kivételt kezelő (általános) kivételkezelőt írjunk?
+	9. Lehet-e parametizálni a kivételkezelőt?
+	</para>
+	<para>
+	Java programnyelv esetén, ha bekövetkezik egy speciális esemény egy módszer futása közben, akkor egy kivétel-objektum jön létre. Ekkor a módszer eldobja a kivételt, és a kivétel bekövetkezett, és jön a kivételezés. Javaban egy kivételező megfelelő típusú, ha a kivételező típusa megegyezik a kivétel típusával, illetve ha óse annak. Javaban két csoportja van a kivételeknek. Ezek az ellenőrzött és a nem ellenőrzött kivételek. Az ellenőrzés elengedett, ha bárhol bekövetkezhet az esemény, vagy ha az ellenőrzés vagy nagyon kényelmetlen, vagy lehetetlen. Javallott az ellenőrző kivételek használata, amelyeknek specifikációja:
+	</para>
+	<programlisting>
+	THROWS kivételnév_lista
+	</programlisting>
+	<para>
+	A kivételek kezeléséhez a java.lang csomagban definiált ősosztály a Throwable objektumai dobhatók el. Az eldobás a THROW utasítás segítségével történik. Kettő standard alosztálya van: az Error, amelybe a rendszerhibák tartoznak (nem ellenőrzöttek), és az Exception, amely az ellenőrzött kivételek osztálya. A THROW alakja:
+	</para>
+	<programlisting>
+	THROW NEW_OPERÁTOR
+	</programlisting>
+	<para>
+	Párhuzamos programozás
+	</para>
+	<para>
+	A folyamat vagy a szál egy processzor által éppen végrehajtott gépi kódú programok. Néhány a párhuzamossal kapcsolatos alapfogalom:
+	</para>
+	<para>
+	A kommunikáció a folyamatok egymással folytatott adatcseréje.
+	Szinkronizáció: Fontos az időbeli szinkronizáció. A párhuzamosan futó folyamatoknak bizonyos időpillanatokban találkozniuk kell. Előfordul, hogy a szinkronizációs ponton zajlik a kommunikáció. 
+	Konkurencia a folyamatok egymással való vetélkedése a programbeli erőforrásokért.
+	Kölcsönös kizárás: Fontos, hogy amíg egy folyamat módosítja az adatot, addig a másik folyamat ne használhassa fel azt.
+	</para>
+	<para>
+	A programozási nyelveknek a párhuzamos programozás megvalósításához rendelkezniük kell eszközzel:
+	</para>
+	<para>
+	1. folyamatok kódjának megadására
+	2. folyamatok elindítására és befejezésére
+	3. a kölcsönös kizárás kérésére
+	4. szinkronizációra
+	5. kommunikáció megvalóstására
+	6. folyamatok működésének felfüggesztésére
+	7. folyamatok prioritásának meghatározására
+	8. folyamatok ütemezésére.
+	</para>
+    </section>        
+    <section>
+        <title>Programozás bevezetés</title>
+        <para>                
+            <citation>KERNIGHANRITCHIE</citation>
+        </para>
+        <para>
+            Megoldás videó: <link xlink:href="https://youtu.be/zmfT9miB-jY">https://youtu.be/zmfT9miB-jY</link>
+        </para>
+        <para>
+            The C Programming Language, Brian W. Kernighan, Dennis M. Ritchie
+	</para>
+	
+	<para>            
+            1.1 Indulás.
+        </para>
+	<para>    
+            A könyv írói szerint minden program elsajátítása a "Helló Világ!" program megírásával történik. 
+            Ez C nyelven így néz ki:
+         </para>
+            <programlisting language = "c">
+
+            <![CDATA[
+            
+include <stdio.h>
+
+int main()
+{
+    printf("Hello World!"\n);
+}
+            
+            ]]>
+             </programlisting>
+        <para>
+            Ezt a forráskódot programnev.c néven kell elmenteni, futtatása operációs rendszertől függ.
+            Lefordítása a "gcc programnev.c -nev" paranccsal történik, futtatása
+            Linuxon "./nev" , Windows alatt "nev" a terminálból. A program eredménye a következőképpen fog kinézni:
+            
+            Hello World!
+        </para>
+        <para>
+            Egy C program függvényekből (function) és változókból (variable) áll. 
+            Egy függvény pedig állításokból (statement). Az állítások megmondják, hogy mit kell csinálni, a változók pedig
+            a számításokhoz szükkséges értékeket tárolják.
+            
+            A munkánkat különböző könyvtárak segíthetik, amelyeket inkludálni kell. Ezt itt az első sor teszi.
+            A legelső sor azt mondja a compilernek, hogy az stdio.h (standard input/output) fájl tartalmát
+            másolja át a mi programfájlunkba.
+            
+        </para>
+        <para>
+            Az argumentumok azok az értékek, amelyeket függvényhíváskor adunk meg. Például a "printf("Helló Világ!\n")"
+            esetén az printf() függvény argumentuma a "Helló Világ!\n" karakterlánc. Az argumentumokat mindig egy zárójelbe tesszük.
+        </para>
+
+	<para>
+		1.2 Változók és aritmetikai kifejezések
+	</para>
+	<para>
+		A következő program két oszlopban kiírja nullától háromszázig huszassával haladva
+		a hőmérsékletet fahrenheit fokban mérve, és mellé celsiusban a C = (5/9)(F-32)
+		képletet használva, ahol a C a celsius, F a fahrenheitban mért hőmérséklet.
+	</para>
+	<programlisting language = "c">
+	<![CDATA[
+
+	#include <stdio.h>
+
+	/* fahrenheit celsius tabla kiíratasa
+	fahr = 0, 20, ..., 300-ra */
+	main()
+	{
+		int fahr, celsius;
+		int lower, upper, step;
+
+		lower = 0;	/* minimum homerseklet */
+		upper = 300;	/* maximum homerseklet */
+		step = 20;	/* lepesek nagysaga */
+
+		/* 20-al noveljuk fahr erteket a maximum elereseig */
+		fahr = lower;
+		while (fahr <= upper) {
+			celsius = 5 * (fahr - 32) / 9;
+			printf("%d\t%d\n", fahr, celsius);
+			fahr = fahr + step;
+		}
+	}
+
+	]]>	
+	</programlisting>
+        <para>
+		A változókat, használatuk előtt, mindig deklarálni kell a "típus név" formában.
+Ezeket deklarációknak hívjuk. A C nyelvben több különböző változótípust ismerünk,
+mint az int (integer - valósszám), char (character - karakter), float (floating point - lebegőpontos szám). A változók méretét tekintve is beszélhetünk mutatókról (pointer), tömbökről (array), uniókról (union), vagy struktúrákról (structure)
+	</para>
+	<para>
+		A program azzal kezdődik, hogy elvégezzük a szükséges deklarációkat, illetve értékeket adunk a step, lower és upper értékeknek. Ezután következik egy while loop, miszerint amíg a fahr kisebb vagy egyenlő az upper számnál, addig számolja ki a fahrhoz tartozó celsius értéket és írassa ki. Végül növeljök a fahr értékét steppel.
+	</para>
+	<para>
+		A while loopon belül láthatjuk, hogy a printf() függvényt használhatjuk az output formázására is. A %d decimális egész szám helyét jelöli, melyeket a kiírandó karakterlánc után adunk meg. Azt, hogy milyen értéket akarunk kiíratni a % jel utáni betűk és számok kombinációjával tudjuk meghatározni. Például %6d (minimum 6 karakter széles decimális integer),
+%6.2f (minimum 6 karakter széles, tizedes vessző után két számjeggyel rendelkező lebegőpontos szám). Ugyanitt láthatunk példát escape sequence-re is (/n és /t). Az escape sequence-ek olyan / után írt karakterek, amelyeknek speciális funkcióik vannak. Például a /n új sort ír, a /t pedig egy tabulátort. 
+	</para>
+	<para>
+		1.3 A for állítás
+	</para>
+	<para>
+		Ebben a részben a következő kódrészletet láthatjuk:
+	</para>
+	<programlisting language = "c">
+	<![CDATA[
+
+	#include <stdio.h>
+
+	main()
+	{
+		int fahr;
+
+		for(fahr = 0; fahr <= 300; fahr = fahr + 20)
+			printf("%3d %6.1f\n", fahr, (5.0/9.0*(fahr - 32)));
+	}
+
+	]]>
+	</programlisting>
+	<para>
+		Ez a program ugyanazt csinálja, mint az előző, csak rövidebben van leírva. A legnagyobb változás a legtöbb változó elhagyása, csak a fahr marad meg. A másik nagyobb változás a for ciklus használata a while helyett, illetve a celsius értéket itt a printf() függvényen belül számoltatjuk ki.
+	</para>
+	<para>
+		A <programlisting> <![CDATA[for (int mettol; mettol < meddig; lepes);]]> </programlisting> for ciklus mettol értéktől meddig értékig lepes lépésszámmal haladva elvégez valamilyen a ciklus belsejében lévő műveletet, vagy azok halmazát.
+	</para>
+	<para>
+		1.4 Szimbolikus konstansok
+	</para>
+	<para>
+		A konstansok olyan változók, amelyeknek az értékeit nem tervezzük megváltoztatni. Konstansokat a C nyelvben a következőképpen lehet definiálni:<programlisting language = "c"><![CDATA[#define NEV ertek]]></programlisting> Ahol a NEV a konstans neve, hagyományosan nagybetűkkel írva a könnyű megkülönböztetés érdekében, ertek pedig a konstans értéke.
+	</para>
+	<para>
+		1.5 Karakter input és output
+	</para>
+	<para>
+		A C programunk a szöveget karakterláncként kezeli, legegyszerűbb függvények, amelyek a szövegekkel dolgoznak a getchar() és a putchar(). Híváskor a getchar() beolvassa a kapott szöveget és visszaadja azt értékként, tehát a <programlisting language = "c"><![CDATA[c = getchar();]]></programlisting> beolvassa a kapott input szöveget és azt az értéket adja a c változónak.
+	</para>
+	<para>
+		A getchar() párja a putchar( string ), amely kiírja egy adott string változó értékét, 
+	</para>
+	<para>
+		A következő egyszerű program kiírja a beolvasott értéket a konzolra:
+	</para>
+	<programlisting language = "c">
+	<![CDATA[
+	#include <stdio.h>
+
+	main()
+	{
+		int c;
+		
+		c = getchar();
+		while( c != EOF )
+		{
+			putchar(c);
+			c = getchar();
+		}
+	}
+	]]>
+	</programlisting>
+	<para>
+		A program úgy működik, hogy beolvassa az input értékeket és amíg az nem egyenlő az EOF értékkel (end of file, az az érték, ami azt jelzi, hogy nincs több input)
+	</para>
+	<para>
+		Ugyanígy megszámoltathatjuk a beírt sorokat, ha a while ciklusba rekunk egy if fügvényt, ahol megnézzük, hogyha a beírt karakter egy új sor ( /n ), akkor egy nl = 0 változó értékét megnöveljük egyel, majd a program végén printf() -fel kiíratjuk azt.
+	</para>
+	<para>
+		1.6 Tömbök
+	</para>
+	<para>
+		Tömböket (array) a következőképpen adhatunk meg: int digits[10], ami például 10 egész szám típusú értéket tartalmazó digits nevű tömböt ad meg. A tömbök számozása nullától kezdődik, tehát hivatkozni az n-edik elemre digits[n-1] -ként kell. Ez fontos a for ciklusokkal való tömbök körbejárásánál, feltöltésénél, ahol ezért a számozást int i = 0 -tól kell kezdeni.	
+	</para>
+	<para>
+		A függvényeket (function) általában a main után szoktuk definiálni a következőképpen:
+	</para>
+	<programlisting language = "c">
+	<![CDATA[
+	vszt_ert fgv_nev ( parameterek )
+	{
+		deklaraciok;
+		utasitasok;
+	}	
+	]]>
+	</programlisting>
+	<para>
+		Minden függvénymegadást a visszatérési értékkel (return value) kell kezdeni, ami a függvény által visszaadott érték típusa, majd ezután jön a függvény neve és utána () jelek között a paraméterei, azaz azok az értékek, amelyekkel a függvényünk dolgozni fog. Ezután jön a függvény teste, amelyekbe azokat az értékeket kell írnunk, amelyekkel dolgozni fog a függvényünk, illetve az utasításokat, amelyeket el fogja végezni. Ha a visszatérési értékünk nem nulla, azaz nem semmit ad vissza (void), akkor a return utasítással adhatjuk meg, hogy mit is adjon vissza a függvényünk.
+	</para>
+	<para>
+		Bevett szokás még a prototipizálás, amely lényege, hogy még a main függvény előtt deklaráljuk, hogy milyen függvényeket fogunk használni. Tesszük ezt a függvény visszatérési értékének, nevének és paramétereinek a megadásával. Majd a main után definiáljuk, hogy mit is értünk a deklarált függvények alatt.
+	</para>
+	<para>
+		A függvények azért hasznosak, mert csak egyszer kell őket megírni, ha az megvan, akkor a compiler beilleszti a kódjukat a megfelelő helyre. Tehát oda, ahol meghívjuk őket.
+	</para>
+	<para>
+		1.8 Argumentumok, érték szerinti hívás
+	</para>
+	<para>
+		C-ben minden függvény érték szerint hívja meg alapesetben az értékeket, azaz, nem az eredeti értékeket módosítják, hanem azoknak csak egy másolatát. Ennek az ellentetje, a referencia szerinti hívás, ahol a függvény a paramétereket módosítja, nem csak azok segítségével adja meg a visszatérési értéket. 
+	</para>
+	<para>
+		1.9 Karaktertömbök
+	</para>
+	<para>
+		C-ben a leggyakorib tömb a karaktertömb, azaz a karakterlánc, ami nevéhez hűen karakterek egy tömbje. Vegyük például a "hello\n" karakterláncot, ami áll lényegében a hello szóból és egy új sort jelképező \n jelből. A karaktertömbben, amiben ez a string el van tárolva, minden karakternek megvan a maga értéke, és minden karakter egy helyet foglal el (itt a "\n" egy karakternek minősül) plusz egy /0 karakter jelzi az adott karakterlánc végét. A %c és a %s formátum specifikációk egyenként egy karaktert és egy karakterláncot jelképeznek. 
+	</para>
+	<para>
+		1.10 Scope
+	</para>
+	<para>
+		Hatókör (scope) szerint megkülönböztetünk lokális és globális értékeket. A lokális értékek csak abban a fügvényblokkban érhetők el, ahol azokat deklaráltuk, de a globális értékek mindenhol. A globális értékeket a main függvényen kívül szokták deklarálni. Fontos, hogyha egy blokkon belül definiálunk egy lokális változót, amelynek a neve megegyezik egy globális változóéval, akkor az adott blokkon belül a lokális változó felülírja a globálist. Explicit módon deklarálhatunk globális változót az extern kulcsszó használatával. Ha egy külső változót szeretnék használni egy függvénnyel, akkor annak a változónak a nevét tudatnuk kell a függvénnyel, ezt az extern kulcsszóval tehetjük meg.
+	</para>
+	<para>
+		2.1 Változók nevei
+	</para>
+	<para>
+		A változók névadásainak vannak bizonyos szabályai. Minden változónév betűkből és számokból áll. Az első karakternek betűnek kell lennie. Az aláhúzásjel ( _ ) itt betűnek számít, de nem ajánlott velük változónevet kezdeni, mert a könyvtárakban sok folyamat azzal kezdődik.
+	</para>
+	<para>
+		A C nyelvben vannak bizonyos kulcsszavak ( például: if, else, continue, int), amelyek nem lehetnek változónevek
+	</para>
+	<para>
+		Jó ha olyan változóneveket választunk, amiknek közük van a feladatukhoz és nem túl hosszúak.
+	</para>
+	<para>
+		2.2 Típusok és méretek
+	</para>
+	<para>
+		A következő alaptípusok léteznek C-ben:
+	char ( egy karakter tárolására alkalmas bájt. ), int (integer, egész szám), float (lebegőpontos szám), double (lebegőpontos szám, de nagyobb méretű, mint a float)
+	</para>
+	<para>
+		Ezeken kívül még használhatóak a short és long kifejezések egész számokra, amelyek egyenként 16 és 32 bit méretűek. Megadásuk nem kötelező.
+	</para>
+	<para>
+		A signed és az unsigned a char és int típusokkal használható, unsigned típusok mindig vagy 0 vagy pozitív értéket vesznek fel, signed értékek ezzel szemben lehetnek negatív számok is, a maximálisan felvehető pozitív értékük a felére minusz egyre csökken, tehár mivel a char 255 bitet vehet fel unsigned értékként, a maximális pozitív értéke signed értékként 127 bit. Minimum értéke -127.
+	</para>
+	<para>
+		2.3 Konstansok
+	</para>
+	<para>
+		A long és unsigned kulcsszavakon kívül egyenként felhasználhatjuk az L és U betűket is. Azaz az 1234 egy integer szám, az 123456789L egy long integer. A kettőt kombinálhatjuk UL-ként.
+	</para>
+	<para>
+		Értéket megadhatunk nyolcas és hexadecimális számrendszerben is. Példaként a 31 számot leírhatjuk úgy hogy 037 (37<subscript>8</subscript>), vagy 0x1f (1F<subscript>16</subscript>)
+	</para>
+	<para>
+		Az escape sequence egy / jel és egsy betű kombinácoiója, ami egy speciális karaktert jelöl. Példaként a már látott '\n' egy új sort jelöl. Az összes C-beli escape sequence:
+	</para>
+	<programlisting>
+	<![CDATA[
+		\a	\\ alert jel, sipolas
+		\b	\\ backspace
+		\f	\\ formfeed, lapdobas
+		\n	\\ uj sor
+		\r	\\ kocsi vissza
+		\t	\\ horizontalis tab
+		\v	\\ vertikalis tab
+		\\	\\ \
+		\?	\\ ? 
+		\'	\\ '
+		\"	\\ "
+		\ooo	\\ oktalis szam
+		\xhh	\\ hexadecimalis szam
+	]]>
+	</programlisting>
+	<para>
+		A konstans kifejezés egy olyan kifejezés, amely csak konstansokat tartalmaz. Például <programlisting><![CDATA[ #define MAXLINE 1000]]></programlisting> Egy MAXLINE nevű 1000 értékkel rendelkező konstanst definiál. A string konstans egy "" jelek közötti karakterlánc. Fontos tudni, hogy a stringet csak a "" jelek határozzák meg, tehát a "ab" "cd" egymás mellet egyenlő lesz "abcd"-vel, mindegy mennyi szóköz van közöttük.
+	</para>
+	<para>
+		Egy másik fajta konstans az enumerációs konstans (enumeration constant), amire egy példa:
+<programlisting><![CDATA[ enum boolean { NO, YES }]]></programlisting> Ami egy boolean nevű enum konstanst definiál. Az első értékhez ( itt: NO ) a 0 tartozik, a másodikhoz pedig az 1 és így tovább további elemek esetén.
+	</para>
+	<para>
+		2.4 Deklarációk
+	</para>
+	<para>
+		Minden változót deklarálni kell használat előtt. Egy tipikus deklaráció:
+	<programlisting>
+	<![CDATA[
+	char c, d;
+	]]>
+	</programlisting>
+	Ami egy c és egy d nevű char típusú változók deklarálása. A változókat lehet külön-külön és egyben is deklarálni. Természetesen a különbözü típusú változókat külön kell deklarálnunk. 
+	</para>
+	<para>
+		Az inicializáció a deklaráció azon altípusa, amikor értéket is adunk a változónak. Például:
+	<programlisting>
+	<![CDATA[
+	char c = "x", d = "y";
+	]]>
+	</programlisting>
+	Itt megadjuk, hogy c legyen "x" betű és d legyen "y".
+	</para>
+	<para>
+		deklarálhatunk a const kulcsszóval is, ha konstant kívánunk deklarálni. A folyamat ugyanaz, csak a típus elé oda kell írnunk, hogy const.
+	</para>
+	<para>
+		2.5 Aritmetikai műveletek
+	</para>
+	<para>
+		Binér (kétváltozós) aritmetikai operátorok a +,-,*,/,%. Ezek közül a % a modulus operátor. Feladata megmondani, hogy a % b esetén mennyi az a-nak b-vel való osztása eseténi maradék. Nem lehet float vagy double-lel alkalmazni. Precedencia szerint + és - azonos rangú, felettük a *, /, és % operátorok foglalnak helyet.
+	</para>
+	<para>
+		2.6 Relációs és logikai operátorok
+	</para>
+	<para>
+		Relációs operátorok a &lt;, &lt;=, &gt; és &gt;= . Egyenlőség operátorok az == és !=, ahol ! nemet jelent. Precedenciájuk az aritmetikai operátorok alatt van. 
+	</para>
+	<para>
+		Logikai operátorok az &amp;&amp; (és) és || (vagy)
+	</para>
+	<para>
+		2.7 Típus átváltások
+	</para>
+	<para>
+		Különböző függvények léteznek típusok átváltásaira, például az
+	<programlisting>
+	<![CDATA[
+	atoi(str)
+	]]>
+	</programlisting>
+	Átváltja str-t egész számmá. Egyéb hasonló függvények a lower() és upper() amelyek egyenként csupa kis vagy nagybetűkké váltanak egy stringet.
+	</para>
+	<para>
+		2.8 Inkrementálás és dekrememtálás
+	</para>
+	<para>
+		Az inkrementálás annyit tesz, mint egyel megnövelni valami értékét (operátora: ++). Ellentetje a dekrementálás (--). Az inkrementálás a következőképpen jelölendő: n++, vagy ++n . A dekrementálás: n-- vagy --n . A különbség aközött, hogy az érték elé írjuk (prefix) vagy után (postfix), hogy a prefixes alakban n használatba kerülése előtt inkrementáljuk/dekrementáljuk az értékét, postfix alakban pedig használat után. 
+	</para>
+	<para>
+		2.9 Bitműveletek
+	</para>
+	<para>
+		A C nyelv 6 bitműveletet tartalmaz: &amp; (ÉS), | (inklúzív VAGY), ^ (exkluzív/kizáró VAGY), &lt;&lt; (left shift), &gt;&gt; (right shift) és ~ (komplementer) . A left és a right shift balra, vagy jobbra tolja az operátor bal oldalán lévő érték bitjeit az operátor jobb oldalán lévő számmal. (x &lt;&lt; 2; x bitjeit kettővel balra tolja.)
+	</para>
+	<para>
+		2.10 Kifejezések és a megfeleltetés operátor
+	</para>
+	<para>
+		Megfeleltetni az egyenlőség jellel kell. Ha op egy operátor, kif1 és kif2 kifejezések akkor 
+	</para>
+	<programlisting>
+
+	<![CDATA[
+		kif1 op= kif2
+	]]>
+	</programlisting>
+	<para>
+		Megegyezik a következővel:
+	</para>
+	<programlisting>
+	<![CDATA[
+		kif1 = kif1 op kif2
+	]]>
+	</programlisting>
+	<para>
+		2.11 Feltételes kifejezések
+	</para>
+	<programlisting>
+	<![CDATA[
+		z = (a > b) ? a : b;
+	]]>
+	</programlisting>
+	<para>
+		A fenti egy feltételes kifejezés. Jelentése: Ha a nagyobb b-nél, akkor z legyen a, egyébként legyen b. Ha a kérdőjel előtti kifejezés igazságértéke igaz, akkor a kettőpont előtti érték kerül felhasználásra, egyébként az azutáni.
+	</para>
+	<para>
+		2.12 Precedencia
+	</para>
+	<para>
+		Ez a rész a precedenciával, azaz a különböző operátorok végrehajtási sorrendjével. Elösször a zárójelek közötti kifejezéseket kell kiértékelni, aztán a kivonás, összeadás, a sizeof operátor, osztás, szorzás. Majd a relációs operátorok, aztán a bitműveletek, a logikai operátorok. A következő a feltételes kifejezés ?: operátor, majd végül a megfeleltető operátorok.
+	</para>	
+	<para>
+		3.1 Utasítások és blokkok
+	</para>
+	<para>
+		Egy kifejezés utasítás lesz, ha pontosvessző követi. A {} jelek utasításcsoportokat blokkokra osztanak. 
+	</para>
+	<para>
+		3.2 If-else
+	</para>
+	<para>
+		Az if-else utasítás a következőképpen néz ki:
+	</para>
+	<programlisting>
+	<![CDATA[
+		if (kifejezes)
+			utasitasok
+		else
+			utasitasok
+	]]>
+	</programlisting>
+	<para>
+		Működése a következő: Az if() részben lévő kifejezés igazságértékét megnézve, ha az érték igaz, teljesíti ai if alatti utasításokat, majd átugorja az else alattiakat. Ha az érték hamis, akkor az if alattiakat ugorja át és az else alatti utasításokat végzi el. Egy soros utasítások esetén a () jelek nem szükségesek az if() és else() után. 
+	</para>
+	<para>
+		3.3 Else-if
+	</para>
+	<programlisting>
+	<![CDATA[
+		if (kifejezes)
+			utasitasok1
+		else if (kifejezes)
+			utasitasok2
+		.......
+		else if (kifejezes)
+			utasitasokX
+		else
+			utasitasokx+1
+	]]>
+	</programlisting>
+	<para>
+		Az else-if utasytás hasonlóan működik az if-else-hez, a különbség az else utasítások számában rejlik, amiből annyit írhatunk, amennyire szükségünk van. A kiértékelés fentről lefelé halad, tehát ha az utolsó előtti kifejezés sem igaz, akkor az utolsó else-hez tartozó utasításokat fogja elvégezni a program.
+	</para>
+	<para>
+		3.4 Switch
+	</para>
+	<programlisting>
+	<![CDATA[
+		switch (kifejezes)
+			case konstans: utasitasok
+			case konstans: utasitasok
+			default: utasitasok
+	]]>
+	</programlisting>
+	<para>
+		A switch utasítás úgy működik, hogy a switch-beli kifejezés értéke lesz összevetve a case kulcsszavak utáni konstansokkal. Ha egyezés van, akkor az adott konstans utáni utasítások lesznek teljesítve. Ha nincs, akkor a default (alapértelmezett) utasításokra kerül a sor. Fontos, hogy ha egyezés van, akkor a többi case konstansaival való összevetés nem lesz átugorva, csak ha használjuk a break parancsot. 
+	</para>
+	<para>
+		3.5 While és for
+	</para>
+	<programlisting>
+	<![CDATA[
+		while (kifejezes)
+			utasitas
+	]]>
+	</programlisting>
+	<para>
+		Ez egy egyszerű while ciklus, ha a kifejezés igaz, az utasítások teljesülnek. Tipikusan az egyik utasítás a kifejezés módosításával van kapcsolatban, egyébként ha az igaz, akkor végtelen ciklusunk születik. 
+	</para>
+	<programlisting>
+	<![CDATA[
+		for(i = 0; i < n; i++)
+			utasitasok
+	]]>
+	</programlisting>
+	<para>
+		Ez a for ciklus i = 0 értéket vizsgálja. Addig folytatódik a ciklus, amíg teljesül az első pontosvessző utáni kifejezés. A második pontosvessző utáni utasítás minden egyes ciklus után (az utasitasok végrehajtása után) végrehajtódik. 
+	</para>
+	<para>
+		3.6 Do while
+	</para>
+	
+	<programlisting>
+	<![CDATA[
+		do
+			utasitasok
+		while (kifejezes);
+	]]>
+	</programlisting>
+	<para>
+		A do-while ciklus hasonló a while ciklushoz, de azzal ellentétben itt mindenképp végrehajtódnak az utasítások egyszer. Majd aztán lesz megvizsgálva a releváns kifejezés igazságértéke. Fontos, hogy a while ciklussal ellentétben a do-while után kell a pontosvessző.
+	</para>
+	<para>
+		3.7 Break és continue
+	</para>
+	<para>
+		A break utasítás feladata a jelenlegi ciklusból való kilépés. A continue feladata a következő iteráció elkezdése.
+	</para>
+	<para>
+		3.8 Goto és label
+	</para>
+	<para>
+		A goto és a label utasítások használata szorosan összefügg. A goto leggyakoribb használata a beágyazott ciklusokból való kilépés. A label-t mindig egy kettőspont követi, a goto utasítást pedig a label neve, ahová szeretnénk "elugrani".
+	</para>
+        </section>        
+    <section>
+        <title>Programozás</title>
+        <para>                
+            <citation>BMECPP</citation>
+        </para>
+	<para>
+		A C++ nem objektumorientált tulajdonságai
+	</para>
+	<para>
+		C-ben, ha egy függvénynek nem afunk paramétert, akkor az meghívható tetszőleges mennyiségű paraméterrel, C++-ban viszont ez azt jelenti, hogy a függvény nem kér paramétert, azaz visszatérési értéke void. C-ben az alapértelmezett visszatérési érték int, C++-ban ilyen nincs.
+	</para>
+	<para>
+		C-vel ellentétben a C++-ban a main függvény kaphat argc és argv parancssori argumentumokat, amik az argumentumok számát és magukat az argumentumokat jelentik sorban. 
+	</para>
+	<para>
+		A C++-ban a C-vel ellentétben létezik bool (boolean - logikai érték) típus. Értéke lehet true (1) vagy false (0). C-ben a logikai értéket int vagy enummal reprezentálhatjuk. 
+	</para>
+	<para>
+		A több-bájtos, pl. Unicode karakterek reprezentálására a C-ben rendelkezésre áll a w_char típus, amihez inkludálni kell a stddef.h és stdlib.h vagy wchar.h fájlokat. A C++ nyelven a wchar_t egy beépített. 
+	</para>
+	<para>
+		C++-ban minden olyan helyen állhat változódeklaráció, ahol utasítás állhat. Ott hozhatjuk létre a változókat, ahol valóban szükségünk van rájuk. Minden változó onnan használható, ahonnan deklaráljuk
+	</para>
+	<para>
+		C-ben minden függvényt a neve azonosít csak, C++-ban nemcsak a név, de a függvényekhez rendelt argumentumok száma és típusa is segít az azonosításban, aminek az az eredménye, hogy míg C-ben nem lehet, addig C++-ban lehet túlterhelni függvényt, azaz két különböző függvény rendelkezhet azonos névvel.
+	</para>
+	<para>
+		A C++-ban lehetőség van a függvények argumentumainak alapértelmezett érték adására. Amikor így hívunk függvényeket, nem adunk meg argumentumokat. 
+	</para>
+	<para>
+		C-ben csak érték szerinti paraméteradás történik. Tehát egy függvény csak akkor fog módosítani értéket, hogyha egy arra mutató mutatót adunk meg argumentumnak. Ezzel szemben a C++ kínál referencia szerinti paraméteradást is, amelyel már módosítja az értékeket az adott függvény.
+	</para>
+	<para>
+		3. Objektumok és osztályok
+	</para>
+	<para>
+		Az egyik alapelv amivel foglalkoznuk kell az az egységbezárás (encapsulation) alapelve, ahol egy bizonyos adatstruktúrát szeretnénk megjeleníteni a programunkban. Az egységbe záró adatstruktúra neve osztály vagy class. Az osztályok egyedi példányait objektumoknak nevezzük. 
+	</para>
+	<para>
+		C-ben az egységbezárást a struct kulcsszóval tesszük, struktúra típusba zárunk. Ugyanazt megtehetjük C++-ban is, de ott már nem csak tagváltozói lehetnek egy struktúrának, hanem tagfüggvényei is. A tagváltozót gyakran attribútumnak, a tagfüggvényt metódusnak nevezzük.
+	</para>
+	<para>
+		Adatrejtésre szolgál a private kulcsszó, amivel olyan adatokat adhatunk meg, amelyeket nem szeretnénk semmiképpen sem módosítani.
+	</para>
+	<para>
+		A konstruktor lehetőséget kínál arra, hogy az objektumok létrejüttükkör inicializálják magukat. 
+	</para>
+	<para>
+		A konstruktorral szemben a destruktor az objektumok által birtokolt esetleges erőforrások felszabadítsát végzi el. 
+	</para>
+	<para>
+		Ide tartozik a dinamikus memóriakezelés, a dinamikus adattagok támogatása és a másoló konstruktor.
+	</para>
+	<para>
+		Az egyes osztályok feljogosíthatnak globális függvényeket a védett tagjaikhoz való hozzáférésre. Ezt a friend kulcsszóval tehetjük meg. A konstruktor olyan speciális függvény, amelynek neve megegyezik az osztály nevével és a példányosításakor automatikusan meghívódik. 
+	</para>
+	<para>
+		Objektumok állapotát lehet inicializálni konstruktorokban. Az értékadást és inicializálást a C++ nyelvben meg kell különböztetni. Inicializálás a változók létrehozásához kapcsolódik, értékadás a már meglévő változóknak való értékmódosítása, amit az egyenlőségjellel érhetünk el.
+	</para>
+	<para>
+		Osztályok esetében lehetőség van olyan speciális, úgynevezett statikus tagváltozók definiálására, melyek az adott osztályhoz és nem az osztály objektumaihoz tartoznak.
+	</para>
+	<para>
+		A C++ nyelvben lehetőség van enumeráció-, osztály-, struktúra- és típusdefiníciók osztálydefiníción belüli megadására. Ezeket beágyazott definícióknak nevezzük.
+	</para>
+	<para>
+		6. Operátorok és túlterhelésük
+	</para>
+	<para>
+		C-ben az operátorok az argumentumaikon végeznek műveleteket, adott eredményeket a visszatérési értékeik feldolgozásával használhatjuk. Az operátorok visszatérítési értékét speciális szabályrendszer rögzíti. A C++ a C-hez képest bevezet néhány új operátort, mint a hatókör-operátor (::) vagy pointer-tag operátorok (.* és ->). 
+	</para>
+	<para>
+		Az operátorok speciális függvények, így a C++-ban túlterhelhetők. Ezt az operator kulcsszóval érhetjük el, előtte a visszatérési érték, majd a kulcsszó után maga az operátor jele és utána zárójelekben az operátor argumentumai.
+	</para>
+	<para> 
+		5. A C++ I/O alapjai
+	</para>
+	<para>
+		A C nyelvben három előre létrehozott és megnyitott állomány leírója áll rendelkezésünkre rögtön a program indulása után.
+		Ezek a stdin (szabványos bemenet), stdout (szabványos kimenet) és az stderr (szabványos hibakimenet). Az stdin csak olvadsható, a másik
+		kettő csak írható. A C++ adatfolyamokban (stream) gondolkodik, amelyek bájtok egy sorozata. Az adatfolyam típusa lehet istream, vagy outstream.
+		Ezek az adatfolyamok a &lt;&lt; illetve &gt;&gt; operátorokat használják.
+		</para>
+	<para>	
+		A C++ I/O használatához fel kell építenünk az iostream állományt. Majd hozzáférhetünk az std::cout -hoz, amely kimeneti lehetőséget biztosít
+		A cout párja a cin, amely bemenetet biztosít. A nyilak mindig az adatáramlás felé mutatnak. 
+		</para>
+	<para>	
+		Istream ragfüggvények: int istream::get() - visszatérése a beolvasott karakter vagy EOF -, 
+		getline - egy sor olvasása sor végéig, vagy más határoló karakterik C++-ban -, read - bináris adat olvasása -,
+		unget, putback - az utolsó karakter visszahelyezése az adatfolyamba.
+		</para>
+	<para>	
+		Ostream tagfüggvények: put - visszatérése a beolvasott karakter vagy EOF -, write - bináris adat beolvasása	
+	</para>
+	<para>
+		Az adatfolyamok manipulálására használhatunk úgynevezett manipulátorokat. Például:
+	</para>
+	<programlisting language = "C++"> <![CDATA[
+		cout << flush;
+		
+		cout.flush(); ]]>
+	</programlisting>
+	<para>
+		Mindkét esetben a cél az, hogy a kimeneti adatfolyam bufferét kiürítsük, ez a felső esetben manipulátorral
+		történik meg, a második esetben pedig tagfüggvénnyel.
+	</para>
+	    <para>
+		    Az I/O manipulátor egy olyan adatfolyam-módosító speciális objektum, amelyet a szokásos kiviteli és bemeneti operátorok
+		    argumentumaként alkalmazunk az adatfolyamokra.
+	    </para>
+	    <para>
+		    A C++ adatfolyamokat használ az állománykezeléshez, amelyeket az iifstream (bemeneti állomány-adatfolyam, input file stream) 
+		    , illetve az ofstream (kimeneti) osztályok reprezentálnak. Az fstream a kétirányú adatfolyamot valósítja meg. 
+		    Az istream és ostream adatfolyamok mindegyike megnyitható olvasásra és írásra is. Az értelmezett műveletek
+		    azonban az adatfolyamok mögött lévő buffer típusától függenek.
+	    </para>
+	    <para>
+		    10. Kivételkezelés
+	    </para>
+	    <para>
+		    A C++ nyelven a hibakezelésre rendelkezésre állnak a kivételek. Ezek a C nyelvtől sokkal struktúráltabb,
+		    átláthatóbb és könnyebben karbantartható megoldást biztosítanak.
+	    </para>
+	    <para>
+		    A kivételkezelés biztosítja, hogy ha hibát detektálunk valahol, akkor a futás azonnal a hibakezelő ágon
+		    folytatódjon. Ez a megoldás nem csak hiba, hanem bármilyen kivételes helyzet esetén használható.
+		    Egy példa:
+	    </para>
+	    <programlisting language = "C++">
+		    <![CDATA[
+		#include <iostream>
+		using namespace std;
+		
+		int main()
+		{
+			try
+			{
+				double d;
+				cout << "Enter a nonzero number: ";
+				cin >> d;
+				if (d == 0)
+					throw "The number can not be zero.";
+				cout << "The reciprocal is: " << 1/d << endl;
+			}
+			catch (const char* exc)
+			{
+				cout << "Error! the error text is: " << exc << endl; 
+			}
+			cout << "Done" << endl;
+		}
+]]>	
+	    </programlisting>
+	    <para>
+		    A fenti program kér a felhasználótól egy számot és a kimenetre írja a reciprokát. 
+		    Ha a felhasználó érvénytelen bemenetként nullát ad meg, akkor jelzi a hibát, és kiírja a 
+		    hiba szövegét szabványos kimenetre. 
+	    </para>
+	    <para>
+		   A kódban egy try-catch blokkot találunk, egy catch ággal. A try védett blokkba írjuk a normál működés kódját,
+		   illetve a catch ágba a hibakezelő kódot. A throw kulcsszó dobja a kivételt, amit ebben a kódban a catch kulcsszó kap el exc 
+		   változóként.
+	    </para>
+	    <para>
+		    Ezek a try-catch blokkok egymásba is ágyazhatóak. Így lehetőség van arra, hogy az adott kivételeket a 
+		    a dobott kivételhez közel, alacsonyabb szinten kezeljük.
+	    </para>
+	    <para>
+		    Az elkapott kivétel a throw kulcsszó paraméter nélküli alkalmazásával újradobható.
+	    </para>
+	    <para>
+		    Egy kivétel dobásakor annak elkapásáig a függvények hívási láncában felfelé haladva az egyes 
+		    függvények lokális változói felszabadulnak. Ezt a folyamatot a hívási verem visszacsévélésének nevezzük. 
+		    Egy kódrészlet:
+	    </para>
+	    <programlisting>
+		    <![CDATA[
+		int main()
+		{
+			try
+			{
+				fl();
+			}
+			catch (const char* errorText)
+			{
+				cerr << errorText << endl;
+			}
+		}
+		
+		void fl()
+		{
+			Fifo fifo; // T.f.h. a Fifo egy általunk megírt osztály
+			f2();
+			...
+		}
+		
+		void f2()
+		{
+			int i = 1;
+			throw "error1";
+		}
+]]>
+	    </programlisting>
+	    <para>
+		    A lépések: 1.: Az f2 kivételt dob. 
+		    2.: az f2-ben definiált i lokális változó felszabadul.
+		    3.: az f1-ben lefoglalt Fifo fifo objektum felszabadul, meghívódik a destruktora.
+		    4.: Lefut a main függvényben lévő catch blokk
+	    </para>
+	    <para>
+		    Még egy példa a kivételkezelésre:
+	    </para>
+	    <programlisting language = "C++">
+<![CDATA[
+		class MessageHandler
+		{
+		public:
+			void ProcessMessages(istream& is)
+			{
+				Message *pMessage;
+				//következő üzenet beolvasása
+				while((pMessage = readNextMessage(is)) != NULL)
+				{
+					try
+					{
+						//kivételt dobhat!
+						pMessage->Process();
+						// ...
+						//Ha végeztünk, felszabadítjuk a Message objektumot.
+						delete pMessage;
+					}
+					catch
+					{
+						delete pMessage;
+						throw;
+					}
+				}
+			}
+		private:
+			Message* readNextMessage(istream& is)
+			{	... }
+		};
+]]>							
+	    </programlisting>
+	    <para>
+		    A MessageHandler egy bemeneti folyamból üzeneteket kiolvasó és azokat feldolgozó osztály.
+	    </para>
+	    <para>
+		    Amennyiben az üzenet feldolgozása során bármilyen kivétel keletkezik, a catch-csel elkapjuk, delszabadítjuk
+		    a helyileg lefoglalt memóriát, majd újradobjuk a kivételt. Ez utóbbi lépés alapvető fontosságú, hiszen a kivétel
+		    lenyelése esetén a hiba rejtve maradna, kiszámíthatatlan következményekkel.
+	    </para>
+    </section>        
+</chapter>                
